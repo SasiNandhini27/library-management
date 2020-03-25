@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Book;
 
 class HomeController extends Controller
 {
@@ -23,7 +24,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $books = Book::all();
+
+        return view('home', compact('books'));
     }
 
     /**
@@ -33,6 +36,17 @@ class HomeController extends Controller
      */
     public function adminHome()
     {
-        return view('adminHome');
+        $booksCount = Book::count();
+        return view('adminHome', ['booksCount'=>$booksCount]);
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function subscribe()
+    {
+        return view('subscribe');
     }
 }

@@ -23,4 +23,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('books', 'BookController');
+Route::resource('/books', 'BookController');
+
+Route::get('/subscribe', 'HomeController@subscribe')->name('subscribe');
